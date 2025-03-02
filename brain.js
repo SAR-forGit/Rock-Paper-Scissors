@@ -6,6 +6,10 @@ let userScore = 0, compScore = 0;
 const userScorePara = document.querySelector("#user-score");
 const compScorePara = document.querySelector("#comp-score");
 
+const humanHand = document.querySelector("#Human-hand");
+const compHand = document.querySelector("#Comp-hand");
+
+
 // To Generate computer choice:
 const genCompChoice = () => {
     const opts = ["Rock", "Paper", "Scissors"];
@@ -56,6 +60,67 @@ const showWinner = (userChoice, CompChoice) => {
     }
 }
 
+// Human hand animation
+const HumanHand = (userChoice) => {
+    const HumanHandAnimation = document.querySelector("#rockhand-human");
+    if (userChoice === "Rock"){
+        humanHand.src = "./Rock, paper, scissors/rock-hand.png"
+        HumanHandAnimation.style.animationDuration = "0s";
+        setTimeout(() => {
+            humanHand.src = "./Rock, paper, scissors/rock-hand.png"
+            HumanHandAnimation.style.animationDuration = "4s";
+        }, 2000);
+    }
+    else if (userChoice === "Paper"){
+        humanHand.src = "./Rock, paper, scissors/paper-hand.png"
+        HumanHandAnimation.style.animationDuration = "0s";
+        setTimeout(() => {
+            humanHand.src = "./Rock, paper, scissors/rock-hand.png"
+            HumanHandAnimation.style.animationDuration = "4s";
+        }, 2000);
+    }
+    else if (userChoice === "Scissors"){
+        humanHand.src = "./Rock, paper, scissors/scissors-hand.png"
+        HumanHandAnimation.style.animationDuration = "0s";
+        setTimeout(() => {
+            humanHand.src = "./Rock, paper, scissors/rock-hand.png"
+            HumanHandAnimation.style.animationDuration = "4s";
+        }, 2000);
+    }
+}
+
+// Computer Hand Animation
+const CompHand = (CompChoice) => {
+    const CompHandAnimation = document.querySelector("#rockhand-comp");
+
+    if (CompChoice === "Rock"){
+        compHand.src = "./Rock, paper, scissors/robotHandRock.png"
+        CompHandAnimation.style.animationDuration = "0s";
+        setTimeout(() => {
+            compHand.src = "./Rock, paper, scissors/robotHandRock.png"
+            CompHandAnimation.style.animationDuration = "4s";
+        }, 2000);
+    }
+
+    else if (CompChoice === "Paper"){
+        compHand.src = "./Rock, paper, scissors/robotHandPaper.png"
+        CompHandAnimation.style.animationDuration = "0s";
+        setTimeout(() => {
+            compHand.src = "./Rock, paper, scissors/robotHandRock.png"
+            CompHandAnimation.style.animationDuration = "4s";
+        }, 2000);
+    }
+
+    else if (CompChoice === "Scissors"){
+        compHand.src = "./Rock, paper, scissors/robotHandScissors.png"
+        CompHandAnimation.style.animationDuration = "0s";
+        setTimeout(() => {
+            compHand.src = "./Rock, paper, scissors/robotHandRock.png"
+            CompHandAnimation.style.animationDuration = "4s";
+        }, 2000);
+    }
+}
+
 // Game Logic
 const playGame = (userChoice) => {
     console.log("User's choice =", userChoice);
@@ -63,4 +128,14 @@ const playGame = (userChoice) => {
     console.log("Computer's choice =", CompChoice);
 
     showWinner(userChoice, CompChoice);
+    HumanHand(userChoice);
+    CompHand(CompChoice);
 };
+
+var preloader = document.getElementById("pre-loader")
+var loader = document.getElementsByClassName("loader")
+
+window.addEventListener ("load", () => {
+    preloader.style.display = "none";
+    loader.style.display = "none";
+})
